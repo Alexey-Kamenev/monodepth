@@ -78,7 +78,7 @@ class MonodepthModel(object):
             ratio = 2 ** (i + 1)
             nh = h / ratio
             nw = w / ratio
-            scaled_imgs.append(tf.image.resize_area(img, [nh, nw]))
+            scaled_imgs.append(tf.image.resize_area(img, [tf.to_int32(nh), tf.to_int32(nw)]))
         return scaled_imgs
 
     def generate_image_left(self, img, disp):
